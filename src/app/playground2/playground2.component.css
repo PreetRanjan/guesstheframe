@@ -27,3 +27,11 @@
   aspect-ratio: 3/2;
   object-fit: contain;
 }
+img:hover {
+  transform: scale(1.5);
+  transition: 0.5s all ease-in-out;
+}
+img:not(:hover) {
+  transform: scale(1);
+  transition: 0.5s all ease-in-out;
+}

@@ -12,6 +12,10 @@ import { Playground2Component } from './playground2/playground2.component';
 import { ShowErrorComponent } from './show-error/show-error.component';
 import { PostFramesComponent } from './post-frames/post-frames.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoaderComponent } from './loader/loader.component';
+import { SubmitframetestComponent } from './submitframetest/submitframetest.component';
+
+import { SurveyComponent } from './survey/survey.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     Playground2Component,
     ShowErrorComponent,
     PostFramesComponent,
+    LoaderComponent,
+    SubmitframetestComponent,
+    SurveyComponent,
   ],
   imports: [
     BrowserModule,

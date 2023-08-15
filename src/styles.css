@@ -9,7 +9,7 @@
 }
 body {
   /* margin-top: 150px; */
-  background-image: url("/assets/scoopcast-banner.png");
+  /* background-image: url('/assets/scoopcast-banner.png'); */
   background-repeat: no-repeat;
   background-color: black;
   background-position-x: center;
@@ -53,15 +53,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-}
-
-img:hover {
-  transform: scale(1.5);
-  transition: 0.5s all ease-in-out;
-}
-img:not(:hover) {
-  transform: scale(1);
-  transition: 0.5s all ease-in-out;
 }
 
 /*Animations*/

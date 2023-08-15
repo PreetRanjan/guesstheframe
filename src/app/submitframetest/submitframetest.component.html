@@ -1,0 +1,67 @@
+<div class="card text-white text-left">
+  <div class="card-header">
+    <h2>Submit Your Frames</h2>
+    <small>Uplaod your frames with image or Links</small>
+    <hr />
+    <button class="btn btn-secondary" type="button" (click)="addFileEntry()">
+      Add Frame
+    </button>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="frameForm" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label for="title" class="p-1">Title</label>
+        <input
+          class="form-control"
+          type="text"
+          name="title"
+          id="title"
+          formControlName="title"
+        />
+      </div>
+      <div>
+        <div formArrayName="fileEntries" class="row justify-content-center">
+          <div
+            class="card m-1"
+            style="width: 16rem"
+            *ngFor="let entry of fileEntries.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="card-body">
+              <img [src]="entry.value.preview" height="200px" width="200px" />
+              <input
+                type="file"
+                required
+                name="frameFile"
+                id="frameFile"
+                formControlName="frameFile"
+                (change)="onFileChange($event, i)"
+              />
+            </div>
+            <div class="card-footer">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="answer"
+                placeholder="Answer"
+              />
+              <button
+                class="btn btn-delete"
+                type="button"
+                (click)="removeFileEntry(i)"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-light">Submit</button>
+      </div>
+    </form>
+  </div>
+  <pre class="card-footer text-white">
+    <!-- {{ frameForm.value | json }} -->
+  </pre>
+</div>

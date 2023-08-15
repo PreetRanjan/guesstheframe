@@ -13,6 +13,7 @@
       <a routerLink="postframes" class="btn btn-secondary"
         >Submit Your Frames</a
       >
+      <a routerLink="survey" class="btn btn-secondary">Survey</a>
     </div>
     <div class="row mt-2">
       <div class="col-md-12">
@@ -22,6 +23,8 @@
           [errorMessage]="errorMessage"
           *ngIf="showErrorMessage"
         ></app-show-error>
+        <!--Show Loader-->
+        <app-loader [show]="isLoading"></app-loader>
         <!--gameSessions-->
         <div class="row justify-content-center" *ngIf="!isLoading">
           <div
@@ -35,7 +38,7 @@
           alt="..."
         /> -->
             <div class="card-body">
-              <h5 class="card-title">{{ sess.title }}</h5>
+              <h5 class="card-title">{{ sess.id }}: {{ sess.title }}</h5>
               <h6>{{ sess.dateCreated | date }}</h6>
               <h4 class="fw-bold">
                 <i class="bi bi-images"></i> {{ sess.questions.length }} Images

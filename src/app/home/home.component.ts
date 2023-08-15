@@ -19,7 +19,8 @@ export class HomeComponent {
 
   currentDate = new Date();
   constructor(private gs: GameService, private router: Router) {
-    delay(3000);
+    delay(30000);
+    this.isLoading = true;
     gs.GetSessions().subscribe({
       next: (sessions) => {
         this.gameSessions = sessions;
@@ -33,7 +34,8 @@ export class HomeComponent {
       error: (error) => {
         this.showErrorMessage = true;
         console.log('Error Occured: ', error);
-        this.errorMessage += `\n ${error}`;
+        this.errorMessage += `\n ${error.message}`;
+        this.isLoading = false;
       },
       complete: () => console.log('Request Completed!'),
     });
