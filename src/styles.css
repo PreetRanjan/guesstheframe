@@ -1,0 +1,143 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  margin-top: 0px;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: white;
+  background-color: #1a4e99;
+}
+body {
+  /* margin-top: 150px; */
+  background-image: url("/assets/scoopcast-banner.png");
+  background-repeat: no-repeat;
+  background-color: black;
+  background-position-x: center;
+  background-size: auto;
+}
+.card {
+  /* From https://css.glass */
+  position: relative;
+  background: rgba(255, 255, 255, 0.3); /* Transparent white background */
+  border-radius: 10px;
+  backdrop-filter: blur(5px); /* Apply a glass-like blur effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+
+  text-align: center;
+}
+.normal-card {
+  /* From https://css.glass */
+  position: relative;
+  background: rgba(255, 255, 255, 0.6); /* Transparent white background */
+  border-radius: 10px;
+  backdrop-filter: blur(5px); /* Apply a glass-like blur effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+
+  text-align: center;
+}
+.btn-primary {
+  background-color: black;
+  border-color: #f6dfc7;
+}
+.btn:hover {
+  color: black;
+  background-color: white;
+  border-color: 2px solid black;
+}
+.img-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+img:hover {
+  transform: scale(1.5);
+  transition: 0.5s all ease-in-out;
+}
+img:not(:hover) {
+  transform: scale(1);
+  transition: 0.5s all ease-in-out;
+}
+
+/*Animations*/
+.typewriter-text {
+  overflow: hidden; /* Hide overflowing characters */
+  white-space: nowrap; /* Prevent text from wrapping */
+  border-right: 0.15em solid #333; /* Create a blinking cursor effect */
+  font-family: monospace; /* Use a monospace font for typewriter effect */
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #333;
+  }
+}
+
+.btn-grad1 {
+  background-image: linear-gradient(
+    to right,
+    #000428 0%,
+    #004e92 51%,
+    #000428 100%
+  );
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.btn-grad1:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-grad2 {
+  background-image: linear-gradient(
+    to right,
+    #200122 0%,
+    #6f0000 51%,
+    #200122 100%
+  );
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.btn-grad2:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}

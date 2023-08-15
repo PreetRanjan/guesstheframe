@@ -1,0 +1,49 @@
+<div class="normal-card">
+  <div class="card-header">
+    <h1 class="fw-bold">Submit Your Frames</h1>
+    <small>Submit Your Frames</small>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="fileUploadForm" (ngSubmit)="onSubmit()">
+      <input
+        type="file"
+        formControlName="fileInput"
+        multiple
+        (change)="onFileInputChange($event)"
+      />
+      <div formArrayName="fileEntries" class="row justify-content-center">
+        <div
+          class="card"
+          style="width: 16rem"
+          *ngFor="let entry of fileEntries.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <div class="card-body">
+            <img [src]="frames[i].content" height="200px" width="200px" />
+          </div>
+          <div class="card-footer">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="answer"
+              placeholder="Answer"
+            />
+            <button
+              class="btn btn-delete"
+              type="button"
+              (click)="removeFileEntry(i)"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-grad2" type="button" (click)="onSubmit()">
+        Upload
+      </button>
+    </form>
+  </div>
+  <div class="card-footer">
+    {{ fileUploadForm.value | json }}
+  </div>
+</div>

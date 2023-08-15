@@ -1,0 +1,65 @@
+<div class="card shadow">
+  <div class="card-body">
+    <div>
+      <!-- <img
+        src="/assets/gtf-logo-2.png"
+        height="20%"
+        width="20%"
+        alt=""
+        srcset=""
+        style="mix-blend-mode: multiply"
+        class=""
+      />
+    </div> -->
+      <a routerLink="/" class="btn btn-grad2">
+        <h1>Go To Home</h1>
+      </a>
+      <div class="row">
+        <div class="col-md-12">
+          <!--gameSessions-->
+          <div class="row justify-content-center">
+            <div class="card shadow m-2 text-center bg-transparent">
+              <!-- <h5 class="card-title">{{ currentQuestion.text }}</h5> -->
+              <img
+                [src]="currentQuestion.contentLink"
+                class="img-center shadow main-frame"
+                height="100%"
+                width="100%"
+                alt="..."
+              />
+              <div class="card-body"></div>
+              <div class="card-footer">
+                <div class="d-grid gap-2">
+                  <a class="btn btn-grad1" (click)="revealAnswer()">
+                    <h1 class="" [ngClass]="{ 'typewriter-text': hasRevealed }">
+                      {{ answer }}
+                    </h1>
+                  </a>
+                </div>
+              </div>
+              <div class="card-footer">
+                <!--Answer Section-->
+
+                <!-- <section *ngIf="hasRevealed">
+                <h1 class="text-shadow typewriter-text fw-bold">
+                  {{ currentQuestion.answer }}
+                </h1>
+                <div class="tags">
+                  <p class="text-shadow">
+                    <small>#scoopcast #developedbypreet</small>
+                  </p>
+                </div>
+              </section> -->
+                <a class="btn btn-grad" (click)="nextFrame()">
+                  <h1 class="">{{ nextFrametext }}</h1>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <h5 class="card-title">Movies! Series! Anime!!</h5> -->
+    </div>
+    <div class="card-footer text-white">Last Updated: 2 days ago</div>
+  </div>
+</div>
