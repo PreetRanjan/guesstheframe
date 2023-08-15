@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-survey',
@@ -10,7 +11,11 @@ import { HttpClient } from '@angular/common/http';
 export class SurveyComponent implements OnInit {
   surveyForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {
     this.surveyForm = this.fb.group({
       title: '',
       frames: this.fb.array([]),
@@ -74,6 +79,7 @@ export class SurveyComponent implements OnInit {
     this.http.post('https://localhost:7230/api/Survey', formData).subscribe(
       (response) => {
         console.log('Success', response);
+        this.router.navigate(['/']);
       },
       (error) => {
         console.error('Error', error);

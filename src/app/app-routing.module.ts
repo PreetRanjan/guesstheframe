@@ -32,11 +32,11 @@ const routes: Routes = [
     component: PostFramesComponent,
   },
   {
-    path: 'submit-frames',
+    path: 'survey',
     component: SubmitframetestComponent,
   },
   {
-    path: 'survey',
+    path: 'submit-frames',
     component: SurveyComponent,
   },
 ];

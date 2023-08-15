@@ -10,7 +10,7 @@
         style="mix-blend-mode: multiply"
       />
       <br />
-      <a routerLink="postframes" class="btn btn-secondary"
+      <a routerLink="submit-frames" class="btn btn-secondary"
         >Submit Your Frames</a
       >
       <a routerLink="survey" class="btn btn-secondary">Survey</a>
@@ -30,7 +30,7 @@
           <div
             class="normal-card shadow m-2"
             style="width: 16rem"
-            *ngFor="let sess of gameSessions"
+            *ngFor="let sess of gameSessions; let i = index"
           >
             <!-- <img
           src="https://images.unsplash.com/photo-1690912638275-ab6d936008b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80"
@@ -51,10 +51,18 @@
             <div class="card-footer">
               <div class="d-grid gap-2">
                 <a
-                  [routerLink]="['playground2', sess.id, '0']"
+                  [routerLink]="['playground', sess.id]"
                   class="btn btn-primary"
                   >Play</a
                 >
+              </div>
+              <div class="d-grid gap-2">
+                <button
+                  class="btn btn-danger"
+                  (click)="deleteSession(i, sess.id)"
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </div>

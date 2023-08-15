@@ -36,4 +36,10 @@ export class GameService {
       );
     });
   }
+
+  DeleteSession(id) {
+    return this.http.delete<GameSession>(
+      `${settings.url}/api/GameSession/` + id
+    );
+  }
 }

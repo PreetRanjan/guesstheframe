@@ -40,4 +40,11 @@ export class HomeComponent {
       complete: () => console.log('Request Completed!'),
     });
   }
+
+  deleteSession(index, id) {
+    this.gameSessions.splice(index, 1);
+    this.gs.DeleteSession(id).subscribe((resp) => {
+      alert('Frame Collection Deleted');
+    });
+  }
 }
