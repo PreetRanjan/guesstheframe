@@ -16,6 +16,8 @@ import { LoaderComponent } from './loader/loader.component';
 import { SubmitframetestComponent } from './submitframetest/submitframetest.component';
 
 import { SurveyComponent } from './survey/survey.component';
+import { MultiframeComponent } from './multiframe/multiframe.component';
+import { FrameSubmissionComponent } from './framesubmission/framesubmission.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { SurveyComponent } from './survey/survey.component';
     LoaderComponent,
     SubmitframetestComponent,
     SurveyComponent,
+    MultiframeComponent,
+    FrameSubmissionComponent,
   ],
   imports: [
     BrowserModule,

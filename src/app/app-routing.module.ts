@@ -7,6 +7,7 @@ import { Playground2Component } from './playground2/playground2.component';
 import { PostFramesComponent } from './post-frames/post-frames.component';
 import { SubmitframetestComponent } from './submitframetest/submitframetest.component';
 import { SurveyComponent } from './survey/survey.component';
+import { FrameSubmissionComponent } from './framesubmission/framesubmission.component';
 
 const routes: Routes = [
   {
@@ -37,7 +38,7 @@ const routes: Routes = [
   },
   {
     path: 'submit-frames',
-    component: SurveyComponent,
+    component: FrameSubmissionComponent,
   },
 ];
 

@@ -1,4 +1,4 @@
 export const settings = {
-  environment: 'dev',
-  url: 'https://localhost:7230',
+  environment: 'prod',
+  url: 'https://guessthemovieapi.azurewebsites.net',
 };

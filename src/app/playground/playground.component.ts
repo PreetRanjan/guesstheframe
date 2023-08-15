@@ -27,6 +27,7 @@ export class PlaygroundComponent {
   answer: string = 'Reveal Answer';
   currentIndex: number = 0;
   nextFrametext = 'NEXT FRAME';
+  prevFrametext = 'PREV FRAME';
   constructor(private route: ActivatedRoute, private gs: GameService) {
     this.sessionId = route.snapshot.params['id'];
     console.log(this.sessionId);
@@ -47,6 +48,23 @@ export class PlaygroundComponent {
   nextFrame() {
     this.isLoading = true;
     this.currentIndex += 1;
+
+    this.currentQuestionId = this.gameSession.questions[this.currentIndex].id;
+    this.currentQuestion = this.gameSession.questions[this.currentIndex];
+
+    this.answer = 'Reveal Answer';
+
+    this.hasRevealed = false;
+    this.isLoading = false;
+    if (this.currentIndex == this.gameSession.questions.length - 1) {
+      this.nextFrametext = 'END OF SESSION';
+      return;
+    }
+  }
+
+  prevFrame() {
+    this.isLoading = true;
+    this.currentIndex -= 1;
 
     this.currentQuestionId = this.gameSession.questions[this.currentIndex].id;
     this.currentQuestion = this.gameSession.questions[this.currentIndex];

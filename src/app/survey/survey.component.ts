@@ -33,6 +33,7 @@ export class SurveyComponent implements OnInit {
       answer: '',
       file: null,
       fileType: '',
+      rawFile: null,
       imagePreview: '', // Add a property for image preview
     });
     this.frames.push(frame);
@@ -50,6 +51,7 @@ export class SurveyComponent implements OnInit {
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
+        this.frames.at(frameIndex).get('rawFile')?.setValue(file);
         this.frames.at(frameIndex).get('imagePreview')?.setValue(reader.result);
         this.frames.at(frameIndex).get('fileType')?.setValue(file.type);
       };
@@ -71,12 +73,17 @@ export class SurveyComponent implements OnInit {
 
       const file = frame.get('file').value;
       console.log(file, frame.get('file'));
-      const blob = new Blob([file], { type: frame.get('fileType').value });
+
+      console.log('Raw File: ', frame.get('rawFile'));
+
+      const blob = new Blob([frame.get('imagePreview').value.split(',')[1]], {
+        type: frame.get('fileType').value,
+      });
       formData.append('frames', blob, fileName);
     });
 
     console.log(formData);
-    this.http.post('https://localhost:7230/api/Survey', formData).subscribe(
+    this.http.post('https://localhost:7230/api/Survey/', formData).subscribe(
       (response) => {
         console.log('Success', response);
         this.router.navigate(['/']);

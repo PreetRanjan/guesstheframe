@@ -1,0 +1,5 @@
+<button class="btn btn-info">Add</button>
+<form [formGroup]="fileUploadForm">
+  <input type="file" (change)="handleFileSelect($event)" multiple />
+  <button (click)="uploadFiles()">Upload Files</button>
+</form>

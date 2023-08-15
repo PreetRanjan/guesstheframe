@@ -1,0 +1,122 @@
+<div class="card shadow">
+  <div class="card-header">
+    <div class="d-flex mb-3">
+      <div class="p-2">
+        <h2 class="text-white">Submit Your Frames</h2>
+        <h6 class="text-white">Upload your images and its movie names</h6>
+      </div>
+      <div class="p-2">
+        <input type="file" (change)="bulkSelection($event)" multiple />
+      </div>
+      <div class="ms-auto p-2">
+        <button class="btn btn-primary mb-3" (click)="addFrame()">
+          Add Frame
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="frameForm">
+      <div class="form-group">
+        <label for="title" class="text-white mb-1">Give it a Title</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          class="form-control form-control-lg fw-bold"
+          formControlName="title"
+        />
+        <div class="alert alert-danger" *ngIf="Title.errors && Title.touched">
+          <small *ngIf="Title.errors.required" class="text-danger"
+            >Title is required!!</small
+          >
+          <small *ngIf="Title.errors.minlength" class="text-danger"
+            >Min lenght is 3!!</small
+          >
+          <small *ngIf="Title.errors.maxlength" class="text-danger"
+            >Max Length is 30!!</small
+          >
+        </div>
+      </div>
+      <div *ngIf="frames.length == 0" class="alert alert-primary p-3 mt-3">
+        <h5>No Frames Added Yet; Click on Add Frame Button to add an image.</h5>
+      </div>
+      <div formArrayName="frames" class="row justify-content-center">
+        <div
+          *ngFor="let frame of frames.controls; let i = index"
+          class="card"
+          style="width: 16rem"
+          [formGroupName]="i"
+        >
+          <div class="mb-3">
+            <div class="mb-3 file-input-container">
+              <label class="custom-button">
+                Choose Image
+                <input
+                  type="file"
+                  class="custom-file-input"
+                  (change)="onFileChange($event, i)"
+                  accept="image/*"
+                />
+              </label>
+              <span class="custom-file-label">{{
+                frame.value.image?.name || 'No file chosen'
+              }}</span>
+              <img
+                *ngIf="frame.value.imageData"
+                [src]="frame.value.imageData"
+                class="preview-image img-thumbnail"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="answer"
+              placeholder="Answer {{ i + 1 }}"
+            />
+            <div class="alert alert-danger" *ngIf="answerErrors(i)">
+              <small *ngIf="AnswerErrors(i).required" class="text-danger"
+                >Answer is required!!</small
+              >
+              <small *ngIf="AnswerErrors(i).minlength" class="text-danger"
+                >Min lenght is 3!!</small
+              >
+              <small *ngIf="AnswerErrors(i).maxlength" class="text-danger"
+                >Max Length is 30!!</small
+              >
+            </div>
+            <div class="alert alert-danger" *ngIf="fileErrors(i)">
+              <small *ngIf="ImageErrors(i).required" class="text-danger"
+                >Answer is required!!</small
+              >
+            </div>
+            <button class="btn btn-primary" (click)="removeEntry(i)">
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex mb-3">
+        <div class="p-2"></div>
+        <div class="p-2"></div>
+        <div class="ms-auto p-2">
+          <button
+            class="btn btn-primary"
+            [disabled]="submitting"
+            (click)="submitFrames()"
+          >
+            <span
+              *ngIf="submitting"
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+            {{ submitting ? 'Submitting...' : 'Submit' }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

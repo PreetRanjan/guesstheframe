@@ -9,7 +9,7 @@
 }
 body {
   /* margin-top: 150px; */
-  /* background-image: url('/assets/scoopcast-banner.png'); */
+  background-image: url('/assets/scoopcast-banner.png');
   background-repeat: no-repeat;
   background-color: black;
   background-position-x: center;
@@ -42,6 +42,15 @@ body {
 .btn-primary {
   background-color: black;
   border-color: #f6dfc7;
+}
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  color: #000;
+  background-color: #a8a8a8;
+  border-color: #000000;
 }
 .btn:hover {
   color: black;
