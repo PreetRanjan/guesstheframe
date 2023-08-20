@@ -24,6 +24,75 @@
 }
 
 .main-frame {
-  aspect-ratio: 3/2;
+  /* aspect-ratio: 3/2; */
   object-fit: contain;
+  animation: 3s infinite alternate slidein;
+}
+/* .card {
+  background: transparent;
+} */
+
+img {
+  animation: animate__bounceOutLeft; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
+}
+
+.image-container {
+  position: relative; /* Required for positioning the overlay text */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.text-overlay {
+  position: absolute; /* Position the overlay relative to the container */
+  top: 0; /* Adjust the top position as needed */
+  left: 0; /* Adjust the left position as needed */
+  /* background-color: rgba(0, 0, 0, 0.5);  */
+  background: transparent;
+  color: white; /* Text color on the overlay */
+  padding: 10px; /* Adjust the padding as needed */
+}
+
+.tube-light {
+  animation: blink 4s infinite alternate; /* Apply the blink animation */
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1; /* Fully on */
+  }
+
+  100% {
+    opacity: 0.2; /* Slightly dimmed */
+  }
+}
+.btn-primary {
+  border: none;
+}
+
+/*Image Animation*/
+.slide-in {
+  position: absolute;
+  top: 50%; /* Start off-screen vertically in the middle */
+  left: -100%; /* Start off-screen to the left */
+  width: 100%;
+  max-width: 100%; /* Ensure the image doesn't exceed its container */
+  transform: translateY(-50%); /* Center vertically */
+  transition: left 1s ease-in-out; /* Animation duration and easing */
+}
+
+/* Define the animation keyframes */
+@keyframes slideIn {
+  0% {
+    left: -100%; /* Off-screen to the left at the start */
+  }
+  100% {
+    left: 0; /* Slides in to the center */
+  }
+}
+
+/* Apply the animation to the image when the .slide-in class is added */
+.slide-in.active {
+  animation: slideIn 1s ease-in-out forwards;
 }

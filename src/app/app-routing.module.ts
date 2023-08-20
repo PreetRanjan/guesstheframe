@@ -29,14 +29,6 @@ const routes: Routes = [
     component: Playground2Component,
   },
   {
-    path: 'postframes',
-    component: PostFramesComponent,
-  },
-  {
-    path: 'survey',
-    component: SubmitframetestComponent,
-  },
-  {
     path: 'submit-frames',
     component: FrameSubmissionComponent,
   },

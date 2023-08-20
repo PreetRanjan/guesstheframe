@@ -1,12 +1,26 @@
-<div class="card shadow">
+<div class="card shadow bg-transparent">
   <div class="card-header">
     <div class="d-flex mb-3">
-      <div class="p-2">
+      <div class="p-2 flex-grow-1">
         <h2 class="text-white">Submit Your Frames</h2>
         <h6 class="text-white">Upload your images and its movie names</h6>
       </div>
       <div class="p-2">
-        <input type="file" (change)="bulkSelection($event)" multiple />
+        <div class="mb-3 file-input-container">
+          <label class="custom-button">
+            Choose Image
+            <input
+              type="file"
+              class="custom-file-input"
+              (change)="bulkSelection($event)"
+              multiple
+              accept="image/*"
+            />
+          </label>
+        </div>
+      </div>
+      <div class="ms-auto p-2">
+        <a routerLink="" class="btn btn-primary">Home</a>
       </div>
       <div class="ms-auto p-2">
         <button class="btn btn-primary mb-3" (click)="addFrame()">
@@ -113,7 +127,7 @@
               role="status"
               aria-hidden="true"
             ></span>
-            {{ submitting ? 'Submitting...' : 'Submit' }}
+            {{ submitting ? 'Submitting Frames...' : 'Submit Frames' }}
           </button>
         </div>
       </div>

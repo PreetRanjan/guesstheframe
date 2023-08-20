@@ -25,7 +25,7 @@
 
 /* Style for the custom button */
 .custom-button {
-  background-color: #600e0e78;
+  background-color: #e1c1c178;
   border: none;
   color: white;
   padding: 8px 16px;
@@ -54,4 +54,5 @@
 }
 .card {
   text-align: left;
+  border: 2px solid #f3f3f3;
 }

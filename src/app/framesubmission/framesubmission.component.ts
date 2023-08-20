@@ -145,7 +145,7 @@ export class FrameSubmissionComponent implements OnInit {
         formData.append('images', frame.image, frame.image.name);
       }
     });
-
+    console.log(this.frameForm.value);
     this.http.post(`${settings.url}/api/Survey/PostFrames`, formData).subscribe(
       (response) => {
         console.log('Response from backend:', response);

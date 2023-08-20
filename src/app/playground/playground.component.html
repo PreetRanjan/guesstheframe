@@ -1,31 +1,38 @@
-<!-- <div class="card-header">
-    <div class="d-flex">
-      <div class="p-2 flex-grow-1">
-        <h1>Playground</h1>
-      </div>
-      <div class="p-2"></div>
-      <div class="p-2">
-        <a routerLink="/" class="btn btn-grad2">
-          <h5>Go To Home</h5>
-        </a>
+<div>
+  <div class="card bg-transparent p-0">
+    <div class="row">
+      <div class="d-grid gap-2">
+        <a class="btn blue-btn-glow tube-light" routerLink="/"> </a>
       </div>
     </div>
-  </div> -->
-
-<div>
-  <!-- <img
-        src="/assets/gtf-logo-2.png"
-        height="20%"
-        width="20%"
-        alt=""
-        srcset=""
-        style="mix-blend-mode: multiply"
-        class=""
-      />
-    </div> -->
-
+    <div class="row" hidden>
+      <div class="col-md-2">
+        <div class="d-grid gap-2">
+          <button class="btn blue-btn" (click)="prevFrame()">
+            <h1 class="">{{ prevFrametext }}</h1>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="d-grid gap-2">
+          <button class="btn blue-btn" (click)="revealAnswer()">
+            <h1 class="" [ngClass]="{ 'typewriter-text': hasRevealed }">
+              {{ answer }}
+            </h1>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="d-grid gap-2">
+          <button class="btn blue-btn" (click)="nextFrame()">
+            <h1 class="">{{ nextFrametext }}</h1>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-10">
       <!--gameSessions-->
       <div class="row justify-content-center">
         <div
@@ -34,32 +41,52 @@
             'background-image: url(' + currentQuestion.contentLink + ')'
           ]"
         >
-          <a routerLink="/" class="btn btn-grad">
+          <!-- <a routerLink="/" class="btn btn-grad">
             <h3>Go To Home</h3>
-          </a>
+          </a> -->
           <!-- <h5 class="card-title">{{ currentQuestion.text }}</h5> -->
-          <img
-            [src]="currentQuestion.contentLink"
-            class="shadow main-frame"
-            height="100%"
-            width="100%"
-            alt="..."
-          />
-          <div class="card-body"></div>
-          <div class="card-footer"></div>
-          <div class="card-footer">
-            <!--Answer Section-->
-
-            <!-- <section *ngIf="hasRevealed">
-                <h1 class="text-shadow typewriter-text fw-bold">
-                  {{ currentQuestion.answer }}
-                </h1>
-                <div class="tags">
-                  <p class="text-shadow">
-                    <small>#scoopcast #developedbypreet</small>
-                  </p>
+          <div class="container bg-transparent">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="image-container position-relative">
+                  <img
+                    [src]="currentQuestion.contentLink"
+                    alt="Your Image"
+                    class="img-fluid"
+                  />
+                  <div
+                    class="text-overlay position-absolute top-50 start-50 translate-middle text-center"
+                  >
+                    <app-loader [show]="isLoading"></app-loader>
+                    <h2
+                      *ngIf="hasRevealed"
+                      [ngClass]="{ 'typewriter-text': hasRevealed }"
+                    >
+                      {{ answer }}
+                    </h2>
+                  </div>
                 </div>
-              </section> -->
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="image-container">
+            <img
+              [src]="currentQuestion.contentLink"
+              class="shadow main-frame"
+              height="100%"
+              width="100%"
+              alt="..."
+            />
+            <div class="text-overlay">
+              <h1>{{ answer }}</h1>
+            </div>
+          </div> -->
+
+          <!--Answer Section-->
+          <!-- <div class="card-footer">
+            
+
             <div class="d-flex flex-row justify-content-between">
               <div class="p-2">
                 <a class="btn btn-grad" (click)="prevFrame()">
@@ -76,16 +103,212 @@
                 </div>
               </div>
               <div class="p-2">
-                <a class="btn btn-grad" (click)="nextFrame()">
+                <a class="btn blue-btn" (click)="nextFrame()">
                   <h5 class="">{{ nextFrametext }}</h5>
                 </a>
               </div>
-            </div>
-          </div>
+            </div> 
+          </div>-->
         </div>
       </div>
     </div>
+    <div class="col-md-2 text-center">
+      <div class="card1 border-0">
+        <h5 contenteditable="" spellcheck="false">Player 1</h5>
+        <div class="card-footer d-grid gap-2 p-0">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scoreMinus(1)"
+            >
+              -
+            </button>
+            <button type="button" class="btn btn-primary">{{ score1 }}</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scorePlus(1)"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card1 border-0">
+        <h5 contenteditable="" spellcheck="false">Player 2</h5>
+        <div class="card-footer d-grid gap-2 p-0">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scoreMinus(2)"
+            >
+              -
+            </button>
+            <button type="button" class="btn btn-primary">{{ score2 }}</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scorePlus(2)"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card1 border-0">
+        <h5 contenteditable="" spellcheck="false">Player 3</h5>
+        <div class="card-footer d-grid gap-2 p-0">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scoreMinus(3)"
+            >
+              -
+            </button>
+            <button type="button" class="btn btn-primary">{{ score3 }}</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scorePlus(3)"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card1 border-0">
+        <h5 contenteditable="" spellcheck="false">Player 4</h5>
+        <div class="card-footer d-grid gap-2 p-0">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scoreMinus(4)"
+            >
+              -
+            </button>
+            <button type="button" class="btn btn-primary">{{ score4 }}</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scorePlus(4)"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn blue-btn" (click)="prevFrame()">
+          <h5 class="">
+            {{ prevFrametext }}
+          </h5>
+        </button>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn blue-btn" (click)="revealAnswer()">
+          <h5 class="" [ngClass]="{ 'typewriter-text': hasRevealed }">
+            {{ answer }}
+          </h5>
+        </button>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn blue-btn" (click)="nextFrame()">
+          <h5 class="">
+            {{ nextFrametext }}
+          </h5>
+        </button>
+      </div>
+      <div class="d-grid gap-2">
+        <a routerLink="/" class="text-white" style="text-decoration: none"
+          >Home</a
+        >
+      </div>
+    </div>
   </div>
+  <!-- <div class="card card1">
+    <div class="card-header">
+      <h2>Reveal Answer</h2>
+    </div>
+  </div> -->
   <!-- <h5 class="card-title">Movies! Series! Anime!!</h5> -->
 </div>
-<div class="card-footer text-white">Last Updated: 2 days ago</div>
+<h6 class="text-white">
+  Frame {{ currentIndex + 1 }} of {{ gameSession.questions.length }}
+  <i class="bi bi-dot"></i>
+  <a
+    style="text-decoration: none"
+    class="text-white"
+    data-bs-toggle="offcanvas"
+    href="#offcanvasExample"
+    role="button"
+    aria-controls="offcanvasExample"
+  >
+    <i class="bi bi-info-square-fill"></i>Instructions
+  </a>
+</h6>
+<div class="row">
+  <div class="d-grid gap-2">
+    <a class="btn blue-btn-glow tube-light" routerLink="/"> </a>
+  </div>
+</div>
+
+<!--Off Canvas For Instructions-->
+<div
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Instructions</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="alert alert-success">
+      Welcome to GuesstTheFrame. This is a Free and Concept game inspirde from
+      <br />
+      <b>SCOOP CAST on YouTube</b>
+    </div>
+
+    <div class="list-group">
+      <div class="list-group-item">
+        1. Edit the player name by clicking on the name.
+      </div>
+      <div class="list-group-item">
+        2. Click on "Reveal Answer" button that will show the movie names on the
+        image and in the button text.
+      </div>
+      <div class="list-group-item">
+        3. Click on PREV and NEXT buttons to navigate through the frames.
+      </div>
+      <div class="list-group-item">
+        4. As of Now player score and names are not stored on the backend so
+        refreshing the page will reset the score.It is a planned feature for the
+        next release.
+      </div>
+    </div>
+
+    <div class="dropdown mt-3">
+      <button
+        class="btn btn-link dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+      >
+        More
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Feedback</a></li>
+        <li><a class="dropdown-item" href="#">About the Developer</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

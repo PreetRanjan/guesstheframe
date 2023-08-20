@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from '../models/Question';
 import { GameService } from '../services/game.service';
 import { GameSession } from '../models/GameSession';
+import { max } from 'rxjs/operators';
 
 @Component({
   selector: 'app-playground',
@@ -26,9 +27,13 @@ export class PlaygroundComponent {
   };
   answer: string = 'Reveal Answer';
   currentIndex: number = 0;
-  nextFrametext = 'NEXT FRAME';
-  prevFrametext = 'PREV FRAME';
-  constructor(private route: ActivatedRoute, private gs: GameService) {
+  nextFrametext = 'Next';
+  prevFrametext = 'First';
+  constructor(
+    private route: ActivatedRoute,
+    private gs: GameService,
+    private router: Router
+  ) {
     this.sessionId = route.snapshot.params['id'];
     console.log(this.sessionId);
 
@@ -46,36 +51,103 @@ export class PlaygroundComponent {
     this.answer = this.currentQuestion.answer;
   }
   nextFrame() {
+    if (this.nextFrametext == 'End') {
+      this.router.navigate(['/']);
+    }
     this.isLoading = true;
     this.currentIndex += 1;
-
-    this.currentQuestionId = this.gameSession.questions[this.currentIndex].id;
-    this.currentQuestion = this.gameSession.questions[this.currentIndex];
-
-    this.answer = 'Reveal Answer';
-
-    this.hasRevealed = false;
-    this.isLoading = false;
     if (this.currentIndex == this.gameSession.questions.length - 1) {
-      this.nextFrametext = 'END OF SESSION';
+      this.currentIndex = this.gameSession.questions.length - 1;
+      this.isLoading = false;
+      this.nextFrametext = 'End';
       return;
+    } else {
+      this.currentQuestionId = this.gameSession.questions[this.currentIndex].id;
+      this.currentQuestion = this.gameSession.questions[this.currentIndex];
+
+      this.answer = 'Reveal Answer';
+
+      this.hasRevealed = false;
+      this.isLoading = false;
+
+      this.prevFrametext = 'Prev';
     }
   }
 
   prevFrame() {
-    this.isLoading = true;
-    this.currentIndex -= 1;
+    if (this.currentIndex > 0) {
+      this.isLoading = true;
+      this.currentIndex -= 1;
 
-    this.currentQuestionId = this.gameSession.questions[this.currentIndex].id;
-    this.currentQuestion = this.gameSession.questions[this.currentIndex];
+      this.currentQuestionId = this.gameSession.questions[this.currentIndex].id;
+      this.currentQuestion = this.gameSession.questions[this.currentIndex];
 
-    this.answer = 'Reveal Answer';
+      this.answer = 'Reveal Answer';
 
-    this.hasRevealed = false;
-    this.isLoading = false;
-    if (this.currentIndex == this.gameSession.questions.length - 1) {
-      this.nextFrametext = 'END OF SESSION';
-      return;
+      this.hasRevealed = false;
+      this.isLoading = false;
+      if (this.currentIndex == this.gameSession.questions.length - 1) {
+        this.nextFrametext = 'End';
+        this.isLoading = false;
+        return;
+      }
+      this.isLoading = false;
+    }
+  }
+  score1: number = 0;
+  score2: number = 0;
+  score3: number = 0;
+  score4: number = 0;
+
+  player1: string = 'GajarMuli';
+  player2: string = 'Nir-Amish';
+  player3: string = 'LazizSheikh';
+  player4: string = 'BL Vish';
+
+  get MaxScore() {
+    let scores = [this.score1, this.score2, this.score3, this.score4];
+    if (Math.max(...scores) > 0) {
+      return Math.max(...scores);
+    }
+  }
+
+  scorePlus(i) {
+    if (i == 1) {
+      this.score1 += 1;
+    } else if (i == 2) {
+      this.score2 += 1;
+    } else if (i == 3) {
+      this.score3 += 1;
+    } else if (i == 4) {
+      this.score4 += 1;
+    }
+  }
+
+  scoreMinus(i) {
+    if (i == 1) {
+      if (this.score1 <= 0) {
+        this.score1 = 0;
+      } else {
+        this.score1 -= 1;
+      }
+    } else if (i == 2) {
+      if (this.score2 <= 0) {
+        this.score2 = 0;
+      } else {
+        this.score2 -= 1;
+      }
+    } else if (i == 3) {
+      if (this.score3 <= 0) {
+        this.score3 = 0;
+      } else {
+        this.score3 -= 1;
+      }
+    } else if (i == 4) {
+      if (this.score4 <= 0) {
+        this.score4 = 0;
+      } else {
+        this.score4 -= 1;
+      }
     }
   }
 }

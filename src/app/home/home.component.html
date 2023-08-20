@@ -1,4 +1,4 @@
-<div class="card shadow">
+<div class="card shadow bg-transparent" style="border-radius: 20px">
   <div class="card-body">
     <div>
       <img
@@ -10,10 +10,10 @@
         style="mix-blend-mode: multiply"
       />
       <br />
-      <a routerLink="submit-frames" class="btn btn-secondary"
+      <a routerLink="submit-frames" class="btn btn-primary"
         >Submit Your Frames</a
       >
-      <a routerLink="survey" class="btn btn-secondary">Survey</a>
+      <!-- <a routerLink="survey" class="btn btn-secondary">Survey</a> -->
     </div>
     <div class="row mt-2">
       <div class="col-md-12">
@@ -28,7 +28,7 @@
         <!--gameSessions-->
         <div class="row justify-content-center" *ngIf="!isLoading">
           <div
-            class="normal-card shadow m-2"
+            class="card1 shadow m-2"
             style="width: 16rem"
             *ngFor="let sess of gameSessions; let i = index"
           >
@@ -52,18 +52,18 @@
               <div class="d-grid gap-2">
                 <a
                   [routerLink]="['playground', sess.id]"
-                  class="btn btn-primary"
+                  class="btn blue-btn-glow"
                   >Play</a
                 >
               </div>
-              <div class="d-grid gap-2">
+              <!-- <div class="d-grid gap-2">
                 <button
                   class="btn btn-danger"
                   (click)="deleteSession(i, sess.id)"
                 >
                   Delete
                 </button>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
