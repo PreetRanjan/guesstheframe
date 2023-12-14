@@ -1,0 +1,97 @@
+<div class="card shadow bg-transparent" style="border-radius: 20px">
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h3 class="text-blue fw-bold fw-italic">
+                    <em> <i class="bi bi-film"></i> Guess</em>
+                </h3>
+                <h3 class="text-blue fw-bold fw-italic">
+                    <em>The Frame</em>
+                </h3>
+                <h5 class="text-purple fw-bold fw-italic">
+                    <em> ScoopCast</em>
+                </h5>
+            </div>
+            <div class="col-md-8">
+                <div id="login-bar">
+                    <a routerLink="submit-frames" class="btn green-btn btn-sm">Submit Your Frames</a>
+                    <i class="bi bi-dot text-blue"></i>
+                    <a routerLink="login" class="btn green-btn btn-sm">Login</a>
+                </div>
+                <ul class="nav nav-pills nav-fill">
+                    <li class="nav-item">
+                        <a class="nav-link nav-blue" routerLink="" aria-current="page">Frames</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-blue" routerLink="riddles" routerLinkActive="active">Riddles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-blue" href="#">More</a>
+                    </li>
+
+                </ul>
+                <!-- <div class="row">
+          <div class="d-grid gap-2">
+            <a class="btn blue-btn-glow tube-light" routerLink="/"> </a>
+          </div>
+        </div> -->
+                <br />
+
+
+
+            </div>
+
+
+        </div>
+        <h3>Riddles Coming Soon!</h3>
+        <div class="row mt-2" hidden>
+            <div class="col-md-12">
+                <div class="d-gri gap-2"></div>
+                <!--Show this if any error occurs-->
+                <app-show-error [errorMessage]="errorMessage" *ngIf="showErrorMessage"></app-show-error>
+                <!--Show Loader-->
+                <app-loader [show]="isLoading"></app-loader>
+                <!--gameSessions-->
+                <div class="row justify-content-center" *ngIf="!isLoading">
+                    <div class="card2 shadow m-2" style="width: 16rem" *ngFor="let sess of gameSessions; let i = index">
+                        <!-- <img
+          src="https://images.unsplash.com/photo-1690912638275-ab6d936008b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80"
+          class="card-img-top"
+          alt="..."
+        /> -->
+                        <div class="card-body">
+                            <h5 class="card-title">{{ sess.id }}: {{ sess.title }}</h5>
+                            <h6>{{ sess.dateAdded | date }}</h6>
+                            <h4 class="fw-bold">
+                                <i class="bi bi-images"></i> {{ sess.riddles.length }} Riddles
+                            </h4>
+                            <!-- <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p> -->
+                        </div>
+                        <div class="card-footer">
+                            <div class="d-grid gap-2">
+                                <a [routerLink]="['playriddle', sess.id]" class="btn green-btn-glow">Play</a>
+                            </div>
+                            <!-- <div class="d-grid gap-2">
+                <button
+                  class="btn btn-danger"
+                  (click)="deleteSession(i, sess.id)"
+                >
+                  Delete
+                </button>
+              </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <h5 class="card-title">Movies! Series! Anime!!</h5> -->
+    </div>
+    <div class="card-footer text-white">
+        Last Updated: {{ currentDate | date }}
+    </div>
+</div>
+<!--Spinner: Show when making the HTTP calls-->

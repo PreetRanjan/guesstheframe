@@ -1,0 +1,30 @@
+/* Styles for the paragraph
+p {
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    white-space: pre-line;
+    /* Prevent line breaks 
+    overflow: hidden;
+    /* Hide overflow text 
+    border-right: 2px solid #333;
+    /* Create cursor effect 
+    animation: typing 3s steps(40);
+    /* Typing animation 
+}
+
+/* Keyframes for the typing animation 
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+} */
+
+/* Custom Modal Animation */
+.modal.fade .modal-dialog {
+    transition: transform 0.75s ease-in;
+    /* transform: rotate(75deg); */
+}

@@ -35,12 +35,9 @@
     <div class="col-md-10">
       <!--gameSessions-->
       <div class="row justify-content-center">
-        <div
-          class="card shadow m-2 text-center bg-transparent"
-          [style]="[
+        <div class="card shadow m-2 text-center bg-transparent" [style]="[
             'background-image: url(' + currentQuestion.contentLink + ')'
-          ]"
-        >
+          ]">
           <!-- <a routerLink="/" class="btn btn-grad">
             <h3>Go To Home</h3>
           </a> -->
@@ -49,21 +46,14 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="image-container position-relative">
-                  <img
-                    [src]="currentQuestion.contentLink"
-                    alt="Your Image"
-                    class="img-fluid"
-                  />
-                  <div
-                    class="text-overlay position-absolute top-50 start-50 translate-middle text-center"
-                  >
+                  <!-- <h5>Frame for: {{player1}}</h5> -->
+                  <img id="questionImage" #questionImage [src]="currentImageUrl" alt="Your Image"
+                    [class.blur]="isBlurred" class="img-fluid blur" />
+                  <div class="text-overlay position-absolute top-50 start-50 translate-middle text-center">
                     <app-loader [show]="isLoading"></app-loader>
-                    <h2
-                      *ngIf="hasRevealed"
-                      [ngClass]="{ 'typewriter-text': hasRevealed }"
-                    >
+                    <!-- <h2 *ngIf="hasRevealed" [ngClass]="{ 'typewriter-text': hasRevealed }">
                       {{ answer }}
-                    </h2>
+                    </h2> -->
                   </div>
                 </div>
               </div>
@@ -114,88 +104,56 @@
     </div>
     <div class="col-md-2 text-center">
       <div class="card1 border-0">
-        <h5 contenteditable="" spellcheck="false">Player 1</h5>
+        <h5 contenteditable="" spellcheck="false">{{player1}}</h5>
         <div class="card-footer d-grid gap-2 p-0">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button
-              type="button"
-              class="btn btn-primary"
-              (click)="scoreMinus(1)"
-            >
+            <button type="button" class="btn btn-primary" (click)="scoreMinus(1)">
               -
             </button>
             <button type="button" class="btn btn-primary">{{ score1 }}</button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              (click)="scorePlus(1)"
-            >
+            <button type="button" class="btn btn-primary" (click)="scorePlus(1)">
               +
             </button>
           </div>
         </div>
       </div>
       <div class="card1 border-0">
-        <h5 contenteditable="" spellcheck="false">Player 2</h5>
+        <h5 contenteditable="" spellcheck="false">{{player2}}</h5>
         <div class="card-footer d-grid gap-2 p-0">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button
-              type="button"
-              class="btn btn-primary"
-              (click)="scoreMinus(2)"
-            >
+            <button type="button" class="btn btn-primary" (click)="scoreMinus(2)">
               -
             </button>
             <button type="button" class="btn btn-primary">{{ score2 }}</button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              (click)="scorePlus(2)"
-            >
+            <button type="button" class="btn btn-primary" (click)="scorePlus(2)">
               +
             </button>
           </div>
         </div>
       </div>
       <div class="card1 border-0">
-        <h5 contenteditable="" spellcheck="false">Player 3</h5>
+        <h5 contenteditable="" spellcheck="false">{{player3}}</h5>
         <div class="card-footer d-grid gap-2 p-0">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button
-              type="button"
-              class="btn btn-primary"
-              (click)="scoreMinus(3)"
-            >
+            <button type="button" class="btn btn-primary" (click)="scoreMinus(3)">
               -
             </button>
             <button type="button" class="btn btn-primary">{{ score3 }}</button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              (click)="scorePlus(3)"
-            >
+            <button type="button" class="btn btn-primary" (click)="scorePlus(3)">
               +
             </button>
           </div>
         </div>
       </div>
       <div class="card1 border-0">
-        <h5 contenteditable="" spellcheck="false">Player 4</h5>
+        <h5 contenteditable="" spellcheck="false">{{player4}}</h5>
         <div class="card-footer d-grid gap-2 p-0">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button
-              type="button"
-              class="btn btn-primary"
-              (click)="scoreMinus(4)"
-            >
+            <button type="button" class="btn btn-primary" (click)="scoreMinus(4)">
               -
             </button>
             <button type="button" class="btn btn-primary">{{ score4 }}</button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              (click)="scorePlus(4)"
-            >
+            <button type="button" class="btn btn-primary" (click)="scorePlus(4)">
               +
             </button>
           </div>
@@ -209,10 +167,11 @@
         </button>
       </div>
       <div class="d-grid gap-2">
-        <button class="btn blue-btn" (click)="revealAnswer()">
-          <h5 class="" [ngClass]="{ 'typewriter-text': hasRevealed }">
+        <button class="btn blue-btn" (click)="revealAnswer()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <!-- <h5 class="" [ngClass]="{ 'typewriter-text': hasRevealed }">
             {{ answer }}
-          </h5>
+          </h5> -->
+          <h5>Reveal Answer</h5>
         </button>
       </div>
       <div class="d-grid gap-2">
@@ -223,9 +182,14 @@
         </button>
       </div>
       <div class="d-grid gap-2">
-        <a routerLink="/" class="text-white" style="text-decoration: none"
-          >Home</a
-        >
+        <button class="btn blue-btn" (click)="toggleBlur()">
+          <h5 class="">
+            Blur
+          </h5>
+        </button>
+      </div>
+      <div class="d-grid gap-2">
+        <a routerLink="/" class="text-white" style="text-decoration: none">Home</a>
       </div>
     </div>
   </div>
@@ -237,16 +201,10 @@
   <!-- <h5 class="card-title">Movies! Series! Anime!!</h5> -->
 </div>
 <h6 class="text-white">
-  Frame {{ currentIndex + 1 }} of {{ gameSession.questions.length }}
+  Frame {{ currentIndex + 1 }} of {{ gameSession?.questions.length }}
   <i class="bi bi-dot"></i>
-  <a
-    style="text-decoration: none"
-    class="text-white"
-    data-bs-toggle="offcanvas"
-    href="#offcanvasExample"
-    role="button"
-    aria-controls="offcanvasExample"
-  >
+  <a style="text-decoration: none" class="text-white" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+    aria-controls="offcanvasExample">
     <i class="bi bi-info-square-fill"></i>Instructions
   </a>
 </h6>
@@ -257,58 +215,74 @@
 </div>
 
 <!--Off Canvas For Instructions-->
-<div
-  class="offcanvas offcanvas-start"
-  tabindex="-1"
-  id="offcanvasExample"
-  aria-labelledby="offcanvasExampleLabel"
->
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Instructions</h5>
-    <button
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="offcanvas"
-      aria-label="Close"
-    ></button>
+<div class="offcanvas offcanvas-start bg-transparent" tabindex="-1" id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel">
+  <div class="card4">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title text-white" id="offcanvasExampleLabel">
+        Instructions
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="card3 p-4">
+        <h5><b>Welcome to GuesstTheFrame.</b></h5>
+
+        <br />
+        This is a Free and Concept game inspirde from
+        <!-- <br />
+        <b>SCOOP CAST on YouTube</b> -->
+      </div>
+      <div class="card-warning p-2">
+        Points has to be given manually by the Host.
+      </div>
+      <div class="card-warning p-2">
+        This is still in dev stage so expect few bugs.
+      </div>
+      <div class="">
+        <div class="p-1">1. Edit the player name by clicking on the name.</div>
+        <div class="p-1">
+          2. Click on "Reveal Answer" button that will show the movie names on
+          the image and in the button text.
+        </div>
+        <div class="p-1">
+          3. Click on PREV and NEXT buttons to navigate through the frames.
+        </div>
+        <div class="p-1">
+          4. As of Now player score and names are not stored on the backend so
+          refreshing the page will reset the score.It is a planned feature for
+          the next release.
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <a routerLink="/" class="text-purple fw-bold" style="text-decoration: none">Feedback</a>
+      </div>
+      <div class="d-grid gap-2">
+        <a routerLink="/" class="text-blue fw-bold" style="text-decoration: none">About the Developer</a>
+      </div>
+    </div>
   </div>
-  <div class="offcanvas-body">
-    <div class="alert alert-success">
-      Welcome to GuesstTheFrame. This is a Free and Concept game inspirde from
-      <br />
-      <b>SCOOP CAST on YouTube</b>
-    </div>
+</div>
 
-    <div class="list-group">
-      <div class="list-group-item">
-        1. Edit the player name by clicking on the name.
+<!-- Modal -->
+<div class="modal fade bg-transparent" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-transparent card1">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Answer For the Frame</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="list-group-item">
-        2. Click on "Reveal Answer" button that will show the movie names on the
-        image and in the button text.
-      </div>
-      <div class="list-group-item">
-        3. Click on PREV and NEXT buttons to navigate through the frames.
-      </div>
-      <div class="list-group-item">
-        4. As of Now player score and names are not stored on the backend so
-        refreshing the page will reset the score.It is a planned feature for the
-        next release.
-      </div>
-    </div>
+      <div class="modal-body">
+        <em>
+          <h1>{{answer}}</h1>
+        </em>
 
-    <div class="dropdown mt-3">
-      <button
-        class="btn btn-link dropdown-toggle"
-        type="button"
-        data-bs-toggle="dropdown"
-      >
-        More
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Feedback</a></li>
-        <li><a class="dropdown-item" href="#">About the Developer</a></li>
-      </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue blue-btn-glow" data-bs-dismiss="modal">Close</button>
+
+      </div>
     </div>
   </div>
 </div>

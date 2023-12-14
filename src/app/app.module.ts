@@ -17,6 +17,12 @@ import { SubmitframetestComponent } from './submitframetest/submitframetest.comp
 
 import { SurveyComponent } from './survey/survey.component';
 import { FrameSubmissionComponent } from './framesubmission/framesubmission.component';
+import { LoginComponent } from './login/login.component';
+import { LoadingCardComponent } from './loading-card/loading-card.component';
+import { RiddleComponent } from './riddle/riddle.component';
+import { Playground3Component } from './playground3/playground3.component';
+import { RiddleHomeComponent } from './riddle-home/riddle-home.component';
+import { FrameGroundComponent } from './frame-ground/frame-ground.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +38,12 @@ import { FrameSubmissionComponent } from './framesubmission/framesubmission.comp
     SubmitframetestComponent,
     SurveyComponent,
     FrameSubmissionComponent,
+    LoginComponent,
+    LoadingCardComponent,
+    RiddleComponent,
+    Playground3Component,
+    RiddleHomeComponent,
+    FrameGroundComponent,
   ],
   imports: [
     BrowserModule,

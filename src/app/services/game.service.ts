@@ -4,6 +4,7 @@ import { GameSession } from '../models/GameSession';
 import { Question } from '../models/Question';
 import { QuestionModel } from '../models/QuestionModel';
 import { settings } from '../envs/environment';
+import { RiddleHeader } from '../models/Riddle';
 
 @Injectable({
   providedIn: 'root',
@@ -41,5 +42,10 @@ export class GameService {
     return this.http.delete<GameSession>(
       `${settings.url}/api/GameSession/` + id
     );
+  }
+
+  GetRiddles() {
+    // throw new Error('Request cound not be completed!');
+    return this.http.get<RiddleHeader[]>(`${settings.url}/api/RiddleHeader`);
   }
 }

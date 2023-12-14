@@ -8,6 +8,10 @@ import { PostFramesComponent } from './post-frames/post-frames.component';
 import { SubmitframetestComponent } from './submitframetest/submitframetest.component';
 import { SurveyComponent } from './survey/survey.component';
 import { FrameSubmissionComponent } from './framesubmission/framesubmission.component';
+import { LoginComponent } from './login/login.component';
+import { RiddleComponent } from './riddle/riddle.component';
+import { RiddleHomeComponent } from './riddle-home/riddle-home.component';
+import { FrameGroundComponent } from './frame-ground/frame-ground.component';
 
 const routes: Routes = [
   {
@@ -19,10 +23,22 @@ const routes: Routes = [
     path: 'instructions',
     component: InstructionsComponent,
   },
-
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'riddles',
+    component: RiddleHomeComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'playriddle/:id',
+    component: RiddleComponent,
+  },
   {
     path: 'playground/:id',
-    component: PlaygroundComponent,
+    component: FrameGroundComponent,
   },
   {
     path: 'playground2/:session_id/:qid',

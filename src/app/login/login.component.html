@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 mt-4">
+    <div class="row">
+      <div class="d-grid gap-2">
+        <a class="btn blue-btn-glow tube-light" routerLink="/"> </a>
+      </div>
+    </div>
+    <div class="card1 bg-transparent border-0">
+      <h5>Welcome to</h5>
+      <h2><i class="bi bi-film"></i> GuesstTheFrame</h2>
+      <hr />
+      <form action="">
+        <div class="form-group">
+          <label for="username">UserName</label>
+          <input
+            type="text"
+            spellcheck="false"
+            class="form-control form-control-lg bg-transparent text-blue"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-group mb-3">
+            <input
+              type="{{ passwordFieldType }}"
+              class="form-control form-control-lg bg-transparent text-blue"
+            />
+            <button
+              class="btn blue-btn"
+              type="button"
+              id="button-addon2"
+              (click)="togglePasswordVisibility()"
+            >
+              <i class="bi bi-eye-fill" *ngIf="eye"></i>
+              <i class="bi bi-eye-slash-fill" *ngIf="!eye"></i>
+            </button>
+          </div>
+        </div>
+        <div class="form-group">
+          <a
+            routerLink="forgot-password"
+            class="text-blue"
+            style="text-decoration: none"
+            ><i class="bi bi-pc-horizontal"></i> Forgot password?</a
+          >
+          <br />
+          <a routerLink="" class="text-blue" style="text-decoration: none"
+            ><i class="bi bi-house-door-fill"></i> Home</a
+          >
+        </div>
+        <div class="d-grid gap-2 mt-4">
+          <button class="btn blue-btn-glow">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>

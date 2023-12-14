@@ -1,37 +1,59 @@
 <div class="card shadow bg-transparent" style="border-radius: 20px">
   <div class="card-body">
-    <div>
-      <img
-        src="/assets/gtf-logo-2.png"
-        height="20%"
-        width="20%"
-        alt=""
-        srcset=""
-        style="mix-blend-mode: multiply"
-      />
-      <br />
-      <a routerLink="submit-frames" class="btn btn-primary"
-        >Submit Your Frames</a
-      >
-      <!-- <a routerLink="survey" class="btn btn-secondary">Survey</a> -->
+
+    <div class="row">
+      <div class="col-md-4">
+        <h3 class="text-blue fw-bold fw-italic">
+          <em> <i class="bi bi-film"></i> Guess</em>
+        </h3>
+        <h3 class="text-blue fw-bold fw-italic">
+          <em>The Frame</em>
+        </h3>
+        <h5 class="text-purple fw-bold fw-italic">
+          <em> ScoopCast</em>
+        </h5>
+      </div>
+      <div class="col-md-8">
+        <div id="login-bar">
+          <a routerLink="submit-frames" class="btn blue-btn btn-sm">Submit Your Frames</a>
+          <i class="bi bi-dot text-blue"></i>
+          <a routerLink="login" class="btn blue-btn btn-sm">Login</a>
+        </div>
+        <ul class="nav nav-pills nav-fill">
+          <li class="nav-item">
+            <a class="nav-link nav-blue" routerLinkActive="active" routerLink="" aria-current="page">Frames</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-blue" routerLinkActive="active" routerLink="riddles">Riddles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-blue" href="#">More</a>
+          </li>
+
+        </ul>
+        <!-- <div class="row">
+          <div class="d-grid gap-2">
+            <a class="btn blue-btn-glow tube-light" routerLink="/"> </a>
+          </div>
+        </div> -->
+        <br />
+
+
+
+      </div>
+
+
     </div>
     <div class="row mt-2">
       <div class="col-md-12">
         <div class="d-grid gap-2"></div>
         <!--Show this if any error occurs-->
-        <app-show-error
-          [errorMessage]="errorMessage"
-          *ngIf="showErrorMessage"
-        ></app-show-error>
+        <app-show-error [errorMessage]="errorMessage" *ngIf="showErrorMessage"></app-show-error>
         <!--Show Loader-->
         <app-loader [show]="isLoading"></app-loader>
         <!--gameSessions-->
         <div class="row justify-content-center" *ngIf="!isLoading">
-          <div
-            class="card1 shadow m-2"
-            style="width: 16rem"
-            *ngFor="let sess of gameSessions; let i = index"
-          >
+          <div class="card1 shadow m-2" style="width: 16rem" *ngFor="let sess of gameSessions; let i = index">
             <!-- <img
           src="https://images.unsplash.com/photo-1690912638275-ab6d936008b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80"
           class="card-img-top"
@@ -50,17 +72,10 @@
             </div>
             <div class="card-footer">
               <div class="d-grid gap-2">
-                <a
-                  [routerLink]="['playground', sess.id]"
-                  class="btn blue-btn-glow"
-                  >Play</a
-                >
+                <a [routerLink]="['playground', sess.id]" class="btn blue-btn-glow">Play</a>
               </div>
               <!-- <div class="d-grid gap-2">
-                <button
-                  class="btn btn-danger"
-                  (click)="deleteSession(i, sess.id)"
-                >
+                <button class="btn btn-danger" (click)="deleteSession(i, sess.id)">
                   Delete
                 </button>
               </div> -->
