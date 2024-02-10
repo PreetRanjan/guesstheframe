@@ -49,6 +49,7 @@
         <div class="d-grid gap-2"></div>
         <!--Show this if any error occurs-->
         <app-show-error [errorMessage]="errorMessage" *ngIf="showErrorMessage"></app-show-error>
+        <app-show-error [errorMessage]="dev_errorMessage"></app-show-error>
         <!--Show Loader-->
         <app-loader [show]="isLoading"></app-loader>
         <!--gameSessions-->

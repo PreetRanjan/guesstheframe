@@ -5,6 +5,6 @@
 
 export const settings = {
   environment: 'dev',
-  // url: 'https://localhost:7230',
-  url: 'https://guessthemovieapi.azurewebsites.net',
+  url: 'https://localhost:7230',
+  //url: 'https://guessthemovieapi.azurewebsites.net',
 };
