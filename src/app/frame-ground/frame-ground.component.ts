@@ -39,14 +39,14 @@ export class FrameGroundComponent implements OnInit {
 
   activePlayer: number = 0;
 
-  // player1: string = 'S.S. GajarMuli';
-  // player2: string = 'Nir-Amish';
-  // player3: string = 'Laziz Sheikh';
-  // player4: string = 'BL Vish';
-  player1: string = 'Player 1';
-  player2: string = 'Player 2';
-  player3: string = 'Player 3';
-  player4: string = 'Player 4';
+  player1: string = 'S.S. GajarMuli';
+  player2: string = 'Nir-Amish';
+  player3: string = 'Laziz Sheikh';
+  player4: string = 'BL Vish';
+  // player1: string = 'Player 1';
+  // player2: string = 'Player 2';
+  // player3: string = 'Player 3';
+  // player4: string = 'Player 4';
   constructor(
     private route: ActivatedRoute,
     private gs: GameService,
@@ -58,7 +58,10 @@ export class FrameGroundComponent implements OnInit {
     gs.GetSessionById(this.sessionId).subscribe((sessions) => {
       this.isLoading = true;
       this.gameSession = sessions;
-      this.nextFrame();
+      //this.nextFrame();
+      this.currentIndex = 0;
+      this.currentQuestionId = this.gameSession.questions[this.currentIndex].id;
+      this.currentQuestion = this.gameSession.questions[this.currentIndex];
       console.log('Loaded First Image: ', this.currentQuestion.contentLink);
       this.isLoading = false;
     });
