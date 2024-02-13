@@ -13,6 +13,7 @@ import { RiddleComponent } from './riddle/riddle.component';
 import { RiddleHomeComponent } from './riddle-home/riddle-home.component';
 import { FrameGroundComponent } from './frame-ground/frame-ground.component';
 import { AboutComponent } from './about/about.component';
+import { Frameground2Component } from './frameground2/frameground2.component';
 
 const routes: Routes = [
   {
@@ -39,7 +40,7 @@ const routes: Routes = [
   },
   {
     path: 'playground/:id',
-    component: FrameGroundComponent,
+    component: Frameground2Component,
   },
   {
     path: 'playground2/:session_id/:qid',

@@ -1,0 +1,302 @@
+<div class="row mb-3">
+  <div class="d-grid gap-2">
+    <a class="btn blue-btn-glow tube-light" routerLink="/"> </a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10">
+    <div id="carouselExample" #carouselFrame class="carousel slide mt-4">
+      <div class="carousel-inner">
+        <!-- <h1>{{ currentIndex }}</h1> -->
+        <div
+          class="carousel-item"
+          *ngFor="let sess of gameSession.questions; let i = index"
+          [ngClass]="{ active: i == 0 }"
+        >
+          <img [src]="sess.contentLink" class="d-block w-100" alt="..." />
+        </div>
+        <!-- <div class="carousel-item">
+          <img src="/assets/sample_1.jpg" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="/assets/sample_2.jpg" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="/assets/sample_3.jpg" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="/assets/sample_1.jpg" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="/assets/sample_2.jpg" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item">
+          <img src="/assets/sample_3.jpg" class="d-block w-100" alt="..." />
+        </div> -->
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        (click)="prevCarousal()"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        (click)="nextCarousal()"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="d-flex flex-column">
+      <div class="card1 border-0">
+        <h5 contenteditable="" spellcheck="false">{{ player1 }}🥕</h5>
+        <div class="card-footer d-grid gap-2 p-0">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scoreMinus(1)"
+            >
+              -
+            </button>
+            <button type="button" class="btn btn-primary">{{ score1 }}</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scorePlus(1)"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card1 border-0">
+        <h5 contenteditable="" spellcheck="false">{{ player2 }} 🍗</h5>
+        <div class="card-footer d-grid gap-2 p-0">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scoreMinus(2)"
+            >
+              -
+            </button>
+            <button type="button" class="btn btn-primary">{{ score2 }}</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scorePlus(2)"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card1 border-0">
+        <h5 contenteditable="" spellcheck="false">{{ player3 }} 🥤</h5>
+        <div class="card-footer d-grid gap-2 p-0">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scoreMinus(3)"
+            >
+              -
+            </button>
+            <button type="button" class="btn btn-primary">{{ score3 }}</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scorePlus(3)"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card1 border-0">
+        <h5 contenteditable="" spellcheck="false">{{ player4 }} 💧</h5>
+        <div class="card-footer d-grid gap-2 p-0">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scoreMinus(4)"
+            >
+              -
+            </button>
+            <button type="button" class="btn btn-primary">{{ score4 }}</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="scorePlus(4)"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-2 d-grid gap-2">
+        <button (click)="revealAnswer()" class="btn blue-btn">
+          Reveal Answer
+        </button>
+      </div>
+      <div class="text-center">
+        <a routerLink="/" class="text-white" style="text-decoration: none"
+          >Home</a
+        >
+      </div>
+      <div class="text-center">
+        <a class="text-white" style="text-decoration: none">#ScoopCast</a>
+      </div>
+      <div class="mt-2 text-center">
+        <h6 class="text-white">
+          <!-- Frame {{ currentIndex + 1 }} of {{ gameSession?.questions.length }} -->
+          <!-- <i class="bi bi-dot"></i> -->
+
+          🎞️ Frame {{ currentIndex + 1 }} of
+          {{ gameSession.questions.length }}
+        </h6>
+        <h6 class="text-white">
+          <!-- Frame {{ currentIndex + 1 }} of {{ gameSession?.questions.length }} -->
+
+          <a
+            style="text-decoration: none"
+            class="text-white"
+            data-bs-toggle="offcanvas"
+            href="#offcanvasExample"
+            role="button"
+            aria-controls="offcanvasExample"
+          >
+            ℹ️ Instructions
+          </a>
+        </h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Bottom Tube Light-->
+<div class="row mt-3">
+  <div class="d-grid gap-2">
+    <a class="btn blue-btn-glow tube-light" routerLink="/"> </a>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade bg-transparent"
+  id="answer_modal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-transparent card1 border-0">
+      <div class="modal-header border-0">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Answer For the Frame
+        </h1>
+        <button
+          type="button"
+          class="btn blue-btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <i class="bi bi-x-square-fill"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <em>
+          <h1>{{ answer }}</h1>
+        </em>
+      </div>
+      <!-- <div class="modal-footer border-0">
+        <button
+          type="button"
+          class="btn btn-blue blue-btn-glow"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<!--Off Canvas For Instructions-->
+<div
+  class="offcanvas offcanvas-start bg-transparent"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div class="card4">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title text-white" id="offcanvasExampleLabel">
+        Instructions
+      </h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="card3 p-4">
+        <h5><b>Welcome to GuesstTheFrame.</b></h5>
+
+        <br />
+        This is a Free and Concept game inspirde from
+        <!-- <br />
+        <b>SCOOP CAST on YouTube</b> -->
+      </div>
+      <div class="card-warning p-2">
+        Points has to be given manually by the Host.
+      </div>
+      <div class="card-warning p-2">
+        This is still in dev stage so expect few bugs.
+      </div>
+      <div class="">
+        <div class="p-1">1. Edit the player name by clicking on the name.</div>
+        <div class="p-1">
+          2. Click on "Reveal Answer" button that will show the movie names on
+          the image and in the button text.
+        </div>
+        <div class="p-1">
+          3. Click on PREV and NEXT buttons to navigate through the frames.
+        </div>
+        <div class="p-1">
+          4. As of Now player score and names are not stored on the backend so
+          refreshing the page will reset the score.It is a planned feature for
+          the next release.
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <a
+          routerLink="/"
+          class="text-purple fw-bold"
+          style="text-decoration: none"
+          >Feedback</a
+        >
+      </div>
+      <div class="d-grid gap-2">
+        <a
+          routerLink="/"
+          class="text-blue fw-bold"
+          style="text-decoration: none"
+          >About the Developer</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

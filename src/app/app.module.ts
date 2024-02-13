@@ -25,6 +25,7 @@ import { RiddleHomeComponent } from './riddle-home/riddle-home.component';
 import { FrameGroundComponent } from './frame-ground/frame-ground.component';
 import { ShowWarnimgComponent } from './show-warnimg/show-warnimg.component';
 import { AboutComponent } from './about/about.component';
+import { Frameground2Component } from './frameground2/frameground2.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { AboutComponent } from './about/about.component';
     FrameGroundComponent,
     ShowWarnimgComponent,
     AboutComponent,
+    Frameground2Component,
   ],
   imports: [
     BrowserModule,

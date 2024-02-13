@@ -16,7 +16,7 @@ export class HomeComponent {
 
   showErrorMessage: boolean = false;
   errorMessage: string = 'We are Sorry! We will be back soon!';
-  dev_errorMessage: string = "Its in BETA. Expect some bugs. ScoopCast!";
+  dev_errorMessage: string = 'Its in BETA. Expect some bugs. ScoopCast!';
   currentDate = new Date();
   constructor(private gs: GameService, private router: Router) {
     delay(30000);
