@@ -1,19 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder,
   FormGroup,
-  FormArray,
+  FormBuilder,
   Validators,
+  FormArray,
   FormControl,
 } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { settings } from '../envs/environment';
 
 @Component({
   selector: 'app-frame-submission',
-  templateUrl: './framesubmission.component.html',
-  styleUrls: ['./framesubmission.component.css'],
+  templateUrl: './frame-submission.component.html',
+  styleUrls: ['./frame-submission.component.css'],
 })
 export class FrameSubmissionComponent implements OnInit {
   frameForm: FormGroup;

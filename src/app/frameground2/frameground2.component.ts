@@ -25,6 +25,9 @@ export class Frameground2Component implements OnInit, AfterViewInit {
     dateCreated: new Date().toString(),
     questions: [],
   };
+  //button visibility
+  nextButtonVisible: boolean = true;
+  prevButtonVisible: boolean = true;
   sessionId: number = 0;
   isLoading: boolean = true;
   currentIndex: number = 0;
@@ -72,6 +75,8 @@ export class Frameground2Component implements OnInit, AfterViewInit {
         // Handle button click event
         console.log('Carousal Slided!!! to ', this.currentIndex);
         this.answer = this.gameSession.questions[this.currentIndex].answer;
+        this.nextButtonVisible = true;
+        this.prevButtonVisible = true;
       }
     );
   }
@@ -89,6 +94,7 @@ export class Frameground2Component implements OnInit, AfterViewInit {
   }
 
   nextCarousal() {
+    this.nextButtonVisible = this.prevButtonVisible = false;
     this.carousal.next();
     if (
       this.currentIndex >= 0 &&
@@ -101,6 +107,7 @@ export class Frameground2Component implements OnInit, AfterViewInit {
     console.log(this.currentIndex);
   }
   prevCarousal() {
+    this.nextButtonVisible = this.prevButtonVisible = false;
     this.carousal.prev();
     if (this.currentIndex == 0) {
       this.currentIndex = this.gameSession.questions.length - 1;
