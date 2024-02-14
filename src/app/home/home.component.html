@@ -83,7 +83,7 @@
         /> -->
             <div class="card-body">
               <h5 class="card-title">{{ sess.id }}: {{ sess.title }}</h5>
-              <h6>{{ sess.dateCreated | date }}</h6>
+              <h6>{{ sess.questions[0].dateCreated | date }}</h6>
               <h4 class="fw-bold">
                 <i class="bi bi-images"></i> {{ sess.questions.length }} Images
               </h4>

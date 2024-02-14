@@ -31,10 +31,7 @@ export class GameService {
       var formData = new FormData();
       formData.append('text', q.answer);
       formData.append('title', q.title);
-      this.http.post(
-        'https://guessthemovieapi.azurewebsites.net/api/Frames/PostQuestions/',
-        formData
-      );
+      this.http.post(`${settings.url}/api/Frames/PostQuestions/`, formData);
     });
   }
 
