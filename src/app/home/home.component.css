@@ -1,3 +1,6 @@
 .normal-card {
   background: transparent;
 }
+#text {
+  /* mix-blend-mode: exclusion; */
+}

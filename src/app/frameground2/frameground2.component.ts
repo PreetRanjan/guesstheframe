@@ -41,10 +41,14 @@ export class Frameground2Component implements OnInit, AfterViewInit {
   score4: number = 0;
 
   //Player Names
-  player1: string = 'S.S. GajarMuli';
+  player1: string = 'SS GajarMuli';
   player2: string = 'Nir-Amish';
   player3: string = 'Laziz Sheikh';
   player4: string = 'BL Vish';
+
+  //Index for Player
+  playerIndex: number = 1;
+
   @ViewChild('carouselFrame') myCarousal: ElementRef;
   // Carousal for Frame Image
   carousal: any;
@@ -93,7 +97,15 @@ export class Frameground2Component implements OnInit, AfterViewInit {
     );
   }
 
+  setPlayerIndex() {
+    if (this.playerIndex == 4) {
+      this.playerIndex = 1;
+    } else {
+      this.playerIndex += 1;
+    }
+  }
   nextCarousal() {
+    this.setPlayerIndex();
     this.nextButtonVisible = this.prevButtonVisible = false;
     this.carousal.next();
     if (
@@ -120,6 +132,10 @@ export class Frameground2Component implements OnInit, AfterViewInit {
     //Show the answer Modal with answer
 
     this.answerModal.show();
+  }
+
+  get Mth() {
+    return Math;
   }
 
   scorePlus(i) {

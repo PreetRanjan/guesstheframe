@@ -23,7 +23,7 @@ export class HomeComponent {
     this.isLoading = true;
     gs.GetSessions().subscribe({
       next: (sessions) => {
-        this.gameSessions = sessions;
+        this.gameSessions = sessions.sort((a, b) => b.id - a.id);
         if (this.gameSessions.length == 0) {
           this.showErrorMessage = true;
 

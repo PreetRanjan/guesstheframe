@@ -79,7 +79,14 @@
   </div>
   <div class="col-md-2">
     <div class="d-flex flex-column">
-      <div class="card1 border-0">
+      <div
+        class="card1 border-0"
+        [ngClass]="{
+          myBorder: playerIndex == 1,
+          currentWinner:
+            score1 == Mth.max(score1, score2, score3, score4) && score1 > 0
+        }"
+      >
         <h5 contenteditable="" spellcheck="false">{{ player1 }}🥕</h5>
         <div class="card-footer d-grid gap-2 p-0">
           <div class="btn-group" role="group" aria-label="Basic example">
@@ -101,7 +108,14 @@
           </div>
         </div>
       </div>
-      <div class="card1 border-0">
+      <div
+        class="card1 border-0"
+        [ngClass]="{
+          myBorder: playerIndex == 2,
+          currentWinner:
+            score2 == Mth.max(score1, score2, score3, score4) && score2 > 0
+        }"
+      >
         <h5 contenteditable="" spellcheck="false">{{ player2 }} 🍗</h5>
         <div class="card-footer d-grid gap-2 p-0">
           <div class="btn-group" role="group" aria-label="Basic example">
@@ -123,7 +137,14 @@
           </div>
         </div>
       </div>
-      <div class="card1 border-0">
+      <div
+        class="card1 border-0"
+        [ngClass]="{
+          myBorder: playerIndex == 3,
+          currentWinner:
+            score3 == Mth.max(score1, score2, score3, score4) && score3 > 0
+        }"
+      >
         <h5 contenteditable="" spellcheck="false">{{ player3 }} 🥤</h5>
         <div class="card-footer d-grid gap-2 p-0">
           <div class="btn-group" role="group" aria-label="Basic example">
@@ -145,7 +166,14 @@
           </div>
         </div>
       </div>
-      <div class="card1 border-0">
+      <div
+        class="card1 border-0"
+        [ngClass]="{
+          myBorder: playerIndex == 4,
+          currentWinner:
+            score4 == Mth.max(score1, score2, score3, score4) && score4 > 0
+        }"
+      >
         <h5 contenteditable="" spellcheck="false">{{ player4 }} 💧</h5>
         <div class="card-footer d-grid gap-2 p-0">
           <div class="btn-group" role="group" aria-label="Basic example">

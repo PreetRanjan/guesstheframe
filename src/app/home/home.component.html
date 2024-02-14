@@ -1,4 +1,4 @@
-<div class="card shadow bg-transparent" style="border-radius: 20px">
+<div class="card shadow bg-transparent">
   <div class="card-body">
     <div class="row">
       <div class="col-md-4">
@@ -80,17 +80,37 @@
         <!--gameSessions-->
         <div class="row justify-content-center" *ngIf="!isLoading">
           <div
-            class="card1 shadow m-2"
+            class="card1 shadow m-2 position-relative p-0"
             style="width: 16rem"
             *ngFor="let sess of gameSessions; let i = index"
           >
-            <!-- <img
-          src="https://images.unsplash.com/photo-1690912638275-ab6d936008b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80"
-          class="card-img-top"
-          alt="..."
-        /> -->
-            <div class="card-body">
-              <h5 class="card-title">{{ sess.id }}: {{ sess.title }}</h5>
+            <span
+              *ngIf="i == 0 || i == 1 || i == 2"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+              style="background-color: #c55dff"
+            >
+              New <i class="bi bi-star-fill"></i>
+              <span class="visually-hidden">unread messages</span>
+            </span>
+            <span
+              *ngIf="i > 2"
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+            >
+              Old <i class="bi bi-star-fill"></i>
+              <span class="visually-hidden">unread messages</span>
+            </span>
+            <div class="card-header p-0">
+              <img
+                [src]="sess.questions[0].contentLink"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+
+            <div class="card-body" style="margin-top: -74px">
+              <h5 class="card-title" id="text">
+                {{ sess.id }}: {{ sess.title }}
+              </h5>
               <h6>{{ sess.questions[0].dateCreated | date }}</h6>
               <h4 class="fw-bold">
                 <i class="bi bi-images"></i> {{ sess.questions.length }} Images
