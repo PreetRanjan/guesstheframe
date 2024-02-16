@@ -14,7 +14,8 @@
 body {
   /* margin-top: 150px; */
   /* background-image: url('/assets/scoopcast-banner.png'); */
-  background-repeat: no-repeat;
+  /* background-image: url('/assets/dark_brick.png'); */
+  /* background-repeat: no-repeat; */
   background-color: black;
   background-position-x: center;
   background-size: auto;
@@ -206,9 +207,16 @@ body {
 .blue-btn-glow {
   background-color: #03e9f4;
   color: #050801;
-  box-shadow: 0px 0px 5px #03e9f4, 0px 0px 25px #03e9f4, 0px 0px 25px #03e9f4,
-    0px 0px 25px #03e9f4;
+  box-shadow: 0px 0px 5px #03e9f4, 0px 0px 20px #03e9f4, 0px 0px 20px #03e9f4,
+    0px 0px 20px #03e9f4;
   -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+.blue-btn-glow:hover {
+  background-color: #fff;
+  color: #050801;
+  box-shadow: 0px 0px 5px #fff, 0px 0px 20px #fff, 0px 0px 20px #fff,
+    0px 0px 20px #fff;
+  -webkit-box-reflect: below 10px linear-gradient(transparent, #0005);
 }
 
 /*Glow Card*/
@@ -218,6 +226,12 @@ body {
   border-radius: 7px;
   padding: 10px;
   margin-top: 10px;
+  transition: transform 0.2s;
+}
+.card1:hover {
+  border: 2.5px solid #fff;
+  transform: scale(1.2);
+  z-index: 3;
 }
 
 .card2 {

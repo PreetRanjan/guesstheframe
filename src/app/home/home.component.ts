@@ -14,6 +14,9 @@ export class HomeComponent {
   gameSessions: GameSession[] = [];
   isLoading: boolean = true;
 
+  naImage: string =
+    'https://sonicsharedstorage.blob.core.windows.net/frames/na.jpg';
+
   showErrorMessage: boolean = false;
   errorMessage: string = 'We are Sorry! We will be back soon!';
   dev_errorMessage: string = 'Its in BETA. Expect some bugs. ScoopCast!';

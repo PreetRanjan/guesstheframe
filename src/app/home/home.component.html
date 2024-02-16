@@ -101,20 +101,20 @@
             </span>
             <div class="card-header p-0">
               <img
-                [src]="sess.questions[0].contentLink"
+                [src]="sess.questions[0]?.contentLink ?? naImage"
                 class="card-img-top"
                 alt="..."
               />
             </div>
 
             <div class="card-body" style="margin-top: -74px">
-              <h5 class="card-title" id="text">
+              <h6 class="card-title" id="text">
                 {{ sess.id }}: {{ sess.title }}
-              </h5>
-              <h6>{{ sess.questions[0].dateCreated | date }}</h6>
-              <h4 class="fw-bold">
+              </h6>
+              <h6>{{ sess.questions[0]?.dateCreated ?? '' | date }}</h6>
+              <h5 class="fw-bold">
                 <i class="bi bi-images"></i> {{ sess.questions.length }} Images
-              </h4>
+              </h5>
               <!-- <p class="card-text">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
